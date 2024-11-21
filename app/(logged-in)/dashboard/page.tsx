@@ -21,10 +21,12 @@ export default async function Dashboard() {
   //authenticated user
   const clerkuser = await currentUser() || null
 
+//console.log(clerkuser);
 
 
-  let userId = null
+  let userId = clerkuser?.id
 
+console.log(clerkuser?.id);
 
 
   //if not authenticated then will redirect to sign-in
@@ -41,6 +43,7 @@ export default async function Dashboard() {
 
   const email = clerkuser?.emailAddresses[0]?.emailAddress
 
+console.log(email);
 
 
   //console.log(clerkuser.id);//id for auth user
@@ -75,7 +78,7 @@ export default async function Dashboard() {
 
 
   const user = await sql`SELECT * from users where email = ${email}`
-  //console.log(user);
+  console.log(user);
 
 
   //if any user exist in db and its len is > 0 means the user array have 1 object 
@@ -84,6 +87,7 @@ export default async function Dashboard() {
 
 
     userId = clerkuser?.id //setting user id
+    console.log(userId);
 
 
     await sql`UPDATE users set user_id = ${userId} where email = ${email}`//updating in database where email is same
@@ -98,7 +102,7 @@ export default async function Dashboard() {
 
     //console.log(price_id);
 
-    planType = pricingPlans.filter((plan) => plan.pricingId === price_id)[0].name
+    planType = pricingPlans.filter((plan) => plan.pricingId === price_id)[0]?.name
 
 
     //filter the pricing plan object which matches the price id of the user which comes from db and after filtering out it gives us an array so we fetch that name the the property of which plan basic or prop
@@ -125,7 +129,7 @@ export default async function Dashboard() {
     const posts = await sql`SELECT * FROM posts WHERE user_id = ${userId}`
 
     console.log(user);
-    console.log(posts);
+   // console.log(posts);
 
     if (posts.length === 5) {
       await sql`DELETE  FROM users WHERE user_id = ${userId}`
