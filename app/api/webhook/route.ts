@@ -12,7 +12,7 @@ if (!process.env.STRIPE_SECRET_KEY) {
 }
 
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!); //initializing stripe
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY); //initializing stripe
 
 
 

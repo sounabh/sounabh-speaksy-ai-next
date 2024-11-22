@@ -10,13 +10,20 @@ export default async function handlecheckoutSession({ session, stripe }: { sessi
 
 
     const customerId = session.customer as string
+    console.log(customerId);
+    
     const customer = await stripe.customers.retrieve(customerId)
+
+    
+   
+    
     const priceId =  session.line_items?.data[0].price?.id
-   // console.log("check",priceId);
+    console.log("check",priceId);
     
     const sql = await getDbConnect()
 
-//console.log(customer);console.log(priceId);
+//console.log("c",customer.email);
+//console.log(priceId);
 //console.log(session);
 
 
