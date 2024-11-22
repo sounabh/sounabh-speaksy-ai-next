@@ -6,7 +6,7 @@ function HowItWorks() {
     //working page 
     return (
         <div>
-            <div className='mt-14'>
+            <div className='mt-14 px-14'>
 
 
                 <div className='flex items-center justify-center w-full pb-6'><h2 className='font-bold text-xl uppercase mb-8 text-purple-600'>How It Works</h2> </div>
@@ -16,12 +16,12 @@ function HowItWorks() {
                 <h3 className='flex justify-center mb-24 text-center font-bold'>Manage your content for Seo focused blog posts</h3>
 
 
-                {/*concept via emojiand arrows */}
+                {/*concept via emoji and arrows */}
 
 
-                <div className='flex items-center justify-center'>
+                <div className='flex items-center justify-center w-full'>
 
-                    <div className='flex items-center justify-center gap-4 lg:gap-24'>
+                    <div className='flex items-center justify-center  lg:gap-24'>
 
                         <div className='flex flex-col gap-4'>
 

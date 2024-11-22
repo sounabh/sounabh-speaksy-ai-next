@@ -25,6 +25,7 @@ export default async function Dashboard() {
 
 
   let userId = clerkuser?.id
+  let status = "basic"
 
 console.log(clerkuser?.id);
 
@@ -66,7 +67,7 @@ console.log(email);
 
   //plantype and status for ui logics
   let planType = 'starter'
-  let status = 'inactive'
+
 
 
 
@@ -92,17 +93,19 @@ console.log(email);
 
     await sql`UPDATE users set user_id = ${userId} where email = ${email}`//updating in database where email is same
 
-    status = user[0]?.status || 'inactive'
+    status = user[0]?.status || 'basic'
     //set status of the user(mens he have a subscription) that he is active or not or set inactive
 
 
     //user have a price id means he have purchased the @399 or @999 so that we can use condition 
-    const price_id = user[0]?.price_id
+    const price_id = user[0]?.price_id || "price_1QFVCEGwp4u3fMJXmHXR3maT"
 
 
-    //console.log(price_id);
+    console.log(price_id);
 
     planType = pricingPlans.filter((plan) => plan.pricingId === price_id)[0]?.name
+    console.log(planType);
+    
 
 
     //filter the pricing plan object which matches the price id of the user which comes from db and after filtering out it gives us an array so we fetch that name the the property of which plan basic or prop
@@ -167,7 +170,7 @@ console.log(email);
           <div className="px-4">
 
             {/* upload post basically red warning that upload form wont show without subscription so basically check the status*/}
-            {status === "inactive" && <UploadPost></UploadPost>}
+            {planType === "starter" && <UploadPost></UploadPost>}
 
             {/* user have which plan ? */}
 

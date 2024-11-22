@@ -7,12 +7,12 @@ import Stripe from "stripe";
 
 // Initialize Stripe with API key, throw error if missing
 
-if (!process.env.STRIPE_SECRET_KEY) {
+if (!process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY) {
     throw new Error('Missing STRIPE_SECRET_KEY environment variable');
 }
 
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY); //initializing stripe
+const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY); //initializing stripe
 
 
 
