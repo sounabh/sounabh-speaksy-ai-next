@@ -68,10 +68,10 @@ export default function ContentEditor({ posts }: { posts: Post[] }) {
                 onChange={handleChangeContent} // Pass the change handler to update content
             />
             <div className="flex items-center justify-between">
-                <button onClick={handleUpdateContent} className="mt-4 bg-blue-500 text-white p-2 rounded" >
+                <button onClick={handleUpdateContent} className="mt-4 bg-cyan-500 hover:bg-cyan-600 text-white p-2 rounded" >
                     Save Changes
                 </button>
-                <button onClick={handleDownloadContent} className="mt-4 bg-pink-500 text-white p-2 rounded" >
+                <button onClick={handleDownloadContent} className="mt-4 bg-amber-500 hover:bg-amber-600 text-white p-2 rounded" >
                     Export
                 </button>
             </div>

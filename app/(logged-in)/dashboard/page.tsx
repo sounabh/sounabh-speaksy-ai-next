@@ -21,13 +21,10 @@ export default async function Dashboard() {
   //authenticated user
   const clerkuser = await currentUser() || null
 
-//console.log(clerkuser);
 
 
-  let userId = clerkuser?.id
-  let status = "basic"
+  let userId = null
 
-console.log(clerkuser?.id);
 
 
   //if not authenticated then will redirect to sign-in
@@ -44,12 +41,11 @@ console.log(clerkuser?.id);
 
   const email = clerkuser?.emailAddresses[0]?.emailAddress
 
-console.log(email);
 
 
   //console.log(clerkuser.id);//id for auth user
 
-  //console.log(clerkuser?.emailAddresses[0]?.emailAddress);
+  console.log(clerkuser?.emailAddresses[0]?.emailAddress);
 
 
 
@@ -67,7 +63,7 @@ console.log(email);
 
   //plantype and status for ui logics
   let planType = 'starter'
-
+  let status = 'inactive'
 
 
 
@@ -79,7 +75,7 @@ console.log(email);
 
 
   const user = await sql`SELECT * from users where email = ${email}`
-  console.log(user);
+  //console.log(user);
 
 
   //if any user exist in db and its len is > 0 means the user array have 1 object 
@@ -88,24 +84,21 @@ console.log(email);
 
 
     userId = clerkuser?.id //setting user id
-    console.log(userId);
 
 
     await sql`UPDATE users set user_id = ${userId} where email = ${email}`//updating in database where email is same
 
-    status = user[0]?.status || 'basic'
+    status = user[0]?.status || 'inactive'
     //set status of the user(mens he have a subscription) that he is active or not or set inactive
 
 
     //user have a price id means he have purchased the @399 or @999 so that we can use condition 
-    const price_id = user[0]?.price_id || "price_1QFVCEGwp4u3fMJXmHXR3maT"
+    const price_id = user[0]?.price_id
 
 
-    console.log(price_id);
+    //console.log(price_id);
 
-    planType = pricingPlans.filter((plan) => plan.pricingId === price_id)[0]?.name
-    console.log(planType);
-    
+    planType = pricingPlans.filter((plan) => plan.pricingId === price_id)[0].name
 
 
     //filter the pricing plan object which matches the price id of the user which comes from db and after filtering out it gives us an array so we fetch that name the the property of which plan basic or prop
@@ -132,7 +125,7 @@ console.log(email);
     const posts = await sql`SELECT * FROM posts WHERE user_id = ${userId}`
 
     console.log(user);
-   // console.log(posts);
+    console.log(posts);
 
     if (posts.length === 5) {
       await sql`DELETE  FROM users WHERE user_id = ${userId}`
@@ -157,7 +150,7 @@ console.log(email);
 
           {/*plantype via pricing plan id and user price id we can dinf or fetch out which plan exist means vasic or plan plan and show in ui*/}
 
-          <Badge className='bg-gradient-to-r from-purple-700 to-pink-800 text-white px-4 py-1 text-lg font-semibold capitalize rounded-full'>{planType}</Badge>
+          <Badge className='bg-gradient-to-r from-cyan-500 to-pink-500 text-white px-4 py-1 text-lg font-semibold capitalize rounded-full'>{planType}</Badge>
 
 
           <h2 className="text-gray-900 text-2xl sm:text-3xl font-bold tracking-tight md:text-4xl capitalize">Start creating amazing content</h2>
@@ -170,21 +163,21 @@ console.log(email);
           <div className="px-4">
 
             {/* upload post basically red warning that upload form wont show without subscription so basically check the status*/}
-            {planType === "starter" && <UploadPost></UploadPost>}
+            {status === "inactive" && <UploadPost></UploadPost>}
 
             {/* user have which plan ? */}
 
 
             {isBasicPlan && (
               <div className="bg-gray-50 shadow-purple-200 shadow-lg p-4 rounded-lg">
-                <span className="text-purple-600 font-semibold text-sm sm:text-base">You have access to create <span className="text-amber-500 font-bold">5</span> blog posts with our <span className="text-amber-500 font-bold">Basic Plan</span> features.</span>
+                <span className="text-pink-700 font-semibold text-sm sm:text-base">You have access to create <span className="text-amber-500 font-bold">5</span> blog posts with our <span className="text-amber-500 font-bold">Basic Plan</span> features.</span>
               </div>
             )}
 
 
             {isProPlan && (
               <div className="bg-gray-50 shadow-purple-200 shadow-lg p-4 rounded-lg">
-                <span className="text-purple-600 font-semibold text-sm sm:text-base">You have access to create <span className="text-amber-500 font-bold">50</span> blog posts with our <span className="text-amber-500 font-bold">Pro Plan</span> premium features.</span>
+                <span className="text-pink-700 font-semibold text-sm sm:text-base">You have access to create <span className="text-amber-500 font-bold">50</span> blog posts with our <span className="text-amber-500 font-bold">Pro Plan</span> premium features.</span>
               </div>
             )}
 

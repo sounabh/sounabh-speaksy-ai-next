@@ -113,9 +113,9 @@ function Uploadform() {
 
           toast({
             title: "Success!",
-            description: "File uploaded successfully",
+            description: "File uploaded successfully now wait for further🤖",
             variant: "default",
-            className: "bg-green-500 text-white"
+            className: "bg-pink-500 text-white"
           });
 
           console.log("Files: ", res);
@@ -181,9 +181,9 @@ function Uploadform() {
 
           toast({
             title: "blog post generated",
-            description: "Your blog content is generated succesffully ",
+            description: "Your blog content is generated succesffully 🎉",
             variant: "default",
-            className: "bg-green-500 text-white"
+            className: "bg-cyan-500 text-white"
           });
 
 
@@ -346,7 +346,7 @@ function Uploadform() {
 
             <Button
               type="submit"
-              className='w-full bg-purple-600 hover:bg-purple-700 transition-colors py-6 text-lg font-medium'
+              className='w-full bg-cyan-600 hover:bg-cyan-700 transition-colors py-6 text-lg font-medium'
             >
 
               Transcribe File

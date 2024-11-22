@@ -16,7 +16,7 @@ export const pricingPlans = [
 
         paymentLink: "https://buy.stripe.com/test_14kbKS9DW2kvdZ6dQQ",
 
-        pricingId: process.env.NODE_ENV === "development" ? "price_1QFVCEGwp4u3fMJXmHXR3maT" : ""
+        pricingId: "price_1QFVCEGwp4u3fMJXmHXR3maT" 
     },
 
 
@@ -35,7 +35,7 @@ export const pricingPlans = [
         paymentLink: "https://buy.stripe.com/test_fZe6qy4jC4sDbQY9AB", //stripe payment pages
 
 
-        pricingId: process.env.NODE_ENV === "development" ? "price_1QFVCEGwp4u3fMJXGaEj2CIL" : ""
+        pricingId:"price_1QFVCEGwp4u3fMJXGaEj2CIL" 
     }
 ];
 

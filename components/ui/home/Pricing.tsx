@@ -15,7 +15,7 @@ function Pricing() {
 
                 <div className='text-center mb-16'>
 
-                    <h2 className='font-bold text-xl uppercase text-purple-600'>Pricing</h2>
+                    <h2 className='font-bold text-xl uppercase text-cyan-600'>Pricing</h2>
 
                     <p className='mt-4 text-xl text-gray-600'>Choose the perfect plan for your needs</p>
 
@@ -31,7 +31,7 @@ function Pricing() {
                             //giving dynamic classes for diffrent cards on based of index 
 
                             className={`relative rounded-2xl p-8 ${index === 1
-                                ? 'bg-purple-50 border-2 border-purple-500 shadow-xl'
+                                ? 'bg-purple-50 border-2 border-pink-500 shadow-xl'
                                 : 'bg-white border border-gray-200'
                                 }`}
                         >
@@ -65,7 +65,7 @@ function Pricing() {
                                     {plan.items.map((item, itemIndex) => (
 
                                         <li key={itemIndex} className='flex items-center'>
-                                            <CheckIcon size={20} className='text-purple-600 mr-2' />
+                                            <CheckIcon size={20} className='text-pink-600 mr-2' />
                                             <span>{item}</span>
                                         </li>
 
@@ -79,7 +79,7 @@ function Pricing() {
                                     <Button
                                         variant="link"
                                         className={`w-full rounded-full py-4 ${index === 1
-                                            ? 'bg-purple-600 hover:bg-purple-700 text-white'
+                                            ? 'bg-pink-600 hover:bg-pink-700 text-white'
                                             : 'bg-black hover:bg-gray-800 text-white'
                                             }`}
                                     >

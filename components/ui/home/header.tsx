@@ -15,7 +15,7 @@ const Header = async () => {
 
     //navlink component
     const NavLink = ({ href, children }: { href: string, children: React.ReactNode }) => {
-        return <Link href={href} className='transition-colors duration-200 text-gray-600 hover:text-purple-500 '>
+        return <Link href={href} className='transition-colors duration-200 text-gray-600 hover:text-cyan-500 '>
             {children}
         </Link>
 
@@ -24,7 +24,7 @@ const Header = async () => {
 
 
     return (
-        <nav className='container flex items-center justify-between px-8 py-4 mx-auto'>
+        <nav className='container flex items-center justify-between md:px-8  px-4 py-4 mx-auto'>
 
             <div className='flex lg:flex-1'>
 
@@ -33,7 +33,7 @@ const Header = async () => {
                     {/*logo*/}
 
                     <NavLink href='/' >
-                        <span className='flex items-center gap-2 shrink-0'> <Ghost className='hover:rotate-12 transform transition duration-200 ease-in-out' /> <span className='font-extrabold text-lg'>SpeakSsy</span>  </span>
+                        <span className='flex items-center gap-1 shrink-0'> <Ghost className='hover:rotate-12 transform transition duration-200 ease-in-out' /> <span className='font-extrabold md:text-lg text-base'>SpeakSsy</span>  </span>
                     </NavLink>
 
                 </div>
@@ -58,18 +58,18 @@ const Header = async () => {
 
                     {/* if user exist */}
 
-
-                    {user ? (<NavLink href='/dashboard'>
-                        Upload a video</NavLink>) : ""}
-
-                    {/* picture* */}
-
-
                     {user ? (
-                        <UserButton></UserButton>
-                    ) : (
-                        <NavLink href='/sign-in'>Sign In</NavLink>
-                    )}
+                        <div className='flex gap-1 md:gap-3 items-center'>
+                            <NavLink href='/dashboard'>
+                                Upload a video</NavLink>
+                            <UserButton></UserButton>
+                        </div>
+                    ) : (<NavLink href='/sign-in'>Sign In</NavLink>)}
+
+
+
+
+
 
                 </div>
 
